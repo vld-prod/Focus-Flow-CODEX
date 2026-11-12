@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="FOCUS FLOW — личное пространство для задач, глубокого фокуса и осмысленного дня. Ваши данные остаются в вашем браузере.">
+  <title>FOCUS FLOW — Ваш день, в вашем ритме</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Основная навигация"></aside>
+    <div class="workspace">
+      <header class="topbar" id="topbar"></header>
+      <main id="main" tabindex="-1"></main>
+      <footer class="footer"><span><i class="status-dot"></i> Место для ваших больших идей</span><span>Маленькие шаги. Большие перемены.</span></footer>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Мобильная навигация"></nav>
+  <dialog id="task-dialog" class="modal" aria-labelledby="task-dialog-title">
+    <form id="task-form">
+      <div class="modal-head"><div><span class="eyebrow">ОСВОБОДИТЕ МЕСТО В ГОЛОВЕ</span><h2 id="task-dialog-title">Новая задача</h2></div><button type="button" class="icon-button" data-close="task-dialog" aria-label="Закрыть">✕</button></div>
+      <input type="hidden" name="id">
+      <label>Что нужно сделать?<input name="title" placeholder="Например, закончить важный проект" required maxlength="160" autocomplete="off"></label>
+      <label>Описание <span class="optional">необязательно</span><textarea name="description" placeholder="Детали, мысли, первый шаг…" maxlength="4000" rows="3"></textarea></label>
+      <div class="form-grid"><label>Дата<input type="date" name="date" required></label><label>Время <span class="optional">необязательно</span><input type="time" name="time"></label></div>
+      <div class="form-grid"><label>Категория<select name="category"><option value="work">Работа</option><option value="personal">Личное</option><option value="learning">Развитие</option><option value="health">Здоровье</option></select></label><label>Приоритет<select name="priority"><option value="medium">Средний</option><option value="high">Высокий</option><option value="low">Низкий</option></select></label></div>
+      <label>Примерная длительность, мин<input name="duration" type="number" min="5" max="1440" step="5" value="30" required></label>
+      <div class="modal-actions"><button type="button" class="button secondary" data-close="task-dialog">Отмена</button><button class="button primary" type="submit">Сохранить задачу <span aria-hidden="true">→</span></button></div>
+    </form>
+  </dialog>
+  <dialog id="confirm-dialog" class="modal confirm-modal" aria-labelledby="confirm-title"><div class="modal-head"><h2 id="confirm-title"></h2><button class="icon-button" data-close="confirm-dialog" aria-label="Закрыть">✕</button></div><p id="confirm-description"></p><div class="modal-actions"><button class="button secondary" data-close="confirm-dialog">Отмена</button><button class="button danger" id="confirm-action">Подтвердить</button></div></dialog>
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden>
+  <noscript><p>Для работы FOCUS FLOW включите JavaScript в браузере.</p></noscript>
+</body>
+</html>
